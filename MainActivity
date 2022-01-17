@@ -1,0 +1,231 @@
+package mapadohorizonte.wandersonlira.com.mapahorizonte;
+
+import android.app.Activity;
+import android.media.MediaPlayer;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+
+public class MainActivity extends Activity {
+
+    private ImageView botaotocar;
+    private ImageView botaotocar2;
+    private ImageView botaotocar3;
+    private ImageView botaotocar4;
+    private ImageView botaotocar5;
+
+    private MediaPlayer mediaPlayer;
+    private MediaPlayer mediaPlayer2;
+    private MediaPlayer mediaPlayer3;
+    private MediaPlayer mediaPlayer4;
+    private MediaPlayer mediaPlayer5;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+
+
+        //BOTÕES
+
+        botaotocar = (ImageView) findViewById(R.id.imagemheroisID);
+        botaotocar2 = (ImageView) findViewById(R.id.imagemjoaoemariaID);
+        botaotocar3 = (ImageView) findViewById(R.id.imagempinoquioID);
+        botaotocar4 = (ImageView) findViewById(R.id.imagemcigarraeformigaID);
+        botaotocar5 = (ImageView) findViewById(R.id.imagemoleaoeoratoID);
+
+        //MEDIAPLAYERS
+
+        mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.quatroherois);
+        mediaPlayer2 = MediaPlayer.create(MainActivity.this, R.raw.joaoemaria);
+        mediaPlayer3 = MediaPlayer.create(MainActivity.this, R.raw.pinoquio);
+        mediaPlayer4 = MediaPlayer.create(MainActivity.this, R.raw.acigarraeaformiga);
+        mediaPlayer5 = MediaPlayer.create(MainActivity.this, R.raw.oleaoeorato);
+
+
+        //SETCLICK
+
+
+        botaotocar5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mediaPlayer5.isPlaying()) {
+                    pausarMusica5();
+
+                }else {
+                    tocarMusica5();
+                }
+            }
+        });
+
+
+
+        botaotocar4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mediaPlayer4.isPlaying()) {
+                    pausarMusica4();
+
+                } else {
+                    tocarMusica4();
+                }
+
+            }
+        });
+
+        botaotocar3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (mediaPlayer3.isPlaying()) {
+                    pausarMusica3();
+
+                }else {
+                    tocarMusica3();
+                }
+            }
+        });
+
+        botaotocar2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (mediaPlayer2.isPlaying()) {
+                    pausarMusica2();
+
+                }else {
+                    tocarMusica2();
+                }
+
+            }
+        });
+
+        botaotocar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (mediaPlayer.isPlaying()) {
+                    pausarMusica();
+
+                }else {
+                    tocarMusica();
+                }
+
+
+
+            }
+        });
+
+
+    }
+
+    //PAUSAR E TOCAR AS MÚSICAS
+
+    //musica 1
+
+    private void tocarMusica() {
+
+        if (mediaPlayer != null){
+            mediaPlayer.start();
+
+        }
+
+    }
+
+    private void pausarMusica() {
+
+        if (mediaPlayer != null) {
+            mediaPlayer.pause();
+
+        }
+
+
+    }
+
+    //musica 2
+
+    private void tocarMusica2() {
+
+        if (mediaPlayer2 != null){
+            mediaPlayer2.start();
+
+        }
+
+    }
+
+    private void pausarMusica2() {
+
+        if (mediaPlayer2 != null) {
+            mediaPlayer2.pause();
+
+        }
+
+
+    }
+
+    //musica 3
+
+    private void tocarMusica3(){
+
+        if (mediaPlayer3 != null){
+            mediaPlayer3.start();
+        }
+    }
+
+    private void pausarMusica3(){
+        if (mediaPlayer3 != null){
+            mediaPlayer3.pause();
+        }
+    }
+
+    //musica 4
+
+    private void tocarMusica4(){
+
+        if (mediaPlayer4 != null){
+            mediaPlayer4.start();
+        }
+    }
+
+    private void pausarMusica4(){
+        if (mediaPlayer4 != null){
+            mediaPlayer4.pause();
+        }
+    }
+
+    //musica 5
+
+    private void tocarMusica5(){
+
+        if (mediaPlayer5 != null){
+            mediaPlayer5.start();
+        }
+    }
+
+    private void pausarMusica5(){
+        if (mediaPlayer5 != null){
+            mediaPlayer5.pause();
+        }
+    }
+
+
+    //Liberar espaço na mémoria do celular após utilização do APP COM VÍDEOS E MÚSICAS/ÁUDIOS (MUITO IMPORTANTE)
+
+    @Override
+    protected void onDestroy() {
+
+        if (mediaPlayer != null && mediaPlayer.isPlaying() ){
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+
+        super.onDestroy();
+    }
+}
+
+
